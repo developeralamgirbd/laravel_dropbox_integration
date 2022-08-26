@@ -54,7 +54,6 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('dropboxCrud', function (Request $request) {
             $key = Str::transliterate(Str::lower($request->img_url));
             if (RateLimiter::tooManyAttempts($key, 1)) {
-                $seconds = RateLimiter::availableIn($key);
                 return redirect()->back();
             }else{
                 RateLimiter::hit($key, 10);

@@ -23,3 +23,7 @@ Route::post('dropbox/chooser', [\App\Http\Controllers\DropboxChooserController::
 Route::get('dropbox/image-table', [\App\Http\Controllers\DropboxCrudController::class, 'index'])->name('dropbox.image.index');
 Route::post('dropbox/image-store', [\App\Http\Controllers\DropboxCrudController::class, 'store'])->middleware('throttle:dropboxCrud')->name('dropbox.image.store');
 Route::delete('dropbox/image-delete/{id}', [\App\Http\Controllers\DropboxCrudController::class, 'destroy'])->middleware('throttle:dropboxCrud')->name('dropbox.image-delete');
+Route::get('dropbox/image-restore/{image}', [\App\Http\Controllers\DropboxCrudController::class, 'restore'])->middleware('throttle:dropboxCrud')->name('dropbox.image-restore');
+
+Route::get('trash', [\App\Http\Controllers\DropboxCrudController::class, 'trash'])->name('dropbox.image.trash');
+
